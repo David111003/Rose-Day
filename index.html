@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day | David & Sapphire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <svg width="0" height="0" style="position: absolute;">
+        <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+            <path d="M0.5,0.95 C0.1,0.6 0,0.4 0,0.25 C0,0.1 0.15,0 0.3,0 C0.4,0 0.5,0.1 0.5,0.2 C0.5,0.1 0.6,0 0.7,0 C0.85,0 1,0.1 1,0.25 C1,0.4 0.9,0.6 0.5,0.95 Z" />
+        </clipPath>
+    </svg>
+
+    <div class="corner-flower flower-tl">🌸</div>
+    <div class="corner-flower flower-tr">🌺</div>
+    <div class="corner-flower flower-bl">🌷</div>
+    <div class="corner-flower flower-br">🌹</div>
+
+    <nav class="sidebar">
+        <img src="E:\Programming\ROSE DAY\1750079777048.jpg" class="nav-profile" alt="Sapphire">
+        
+        <button class="tab-btn active" onclick="openTab('home', this)" data-tooltip="Home">🏠</button>
+        <button class="tab-btn" onclick="openTab('gallery', this)" data-tooltip="Memories">📸</button>
+        <button class="tab-btn" onclick="openTab('letter', this)" data-tooltip="Letter">💌</button>
+        <button class="tab-btn" onclick="openTab('surprise', this)" data-tooltip="Surprise">🎁</button>
+    </nav>
+
+    <div class="main-content">
+        
+        <audio id="bg-music" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/Soundhelix-Song-1.mp3" type="audio/mp3">
+        </audio>
+
+        <div id="home" class="content-card active">
+            <div class="heart-inner">
+                <div class="music-pill" onclick="toggleMusic()">🎵 Play Our Song</div>
+                <h1>Happy Rose Day</h1>
+                <h2>To My Beautiful Rose, Sapphire</h2>
+                <div class="big-rose">🌹</div>
+                <p class="quote-text">
+                    <i>"Love is the flower you've got to let grow."</i><br>
+                    You make my world blossom.
+                </p>
+            </div>
+        </div>
+
+        <div id="gallery" class="content-card">
+            <div class="heart-inner">
+                <h1>Our Moments</h1>
+                <h2>Captured in Time 📸</h2>
+                <div class="gallery-grid">
+                    <div class="polaroid" onclick="likePhoto(this)">
+                        <img src="E:\Programming\ROSE DAY\IMG-20230422-WA0011-01.jpeg">
+                        <div class="caption"></div>
+                    </div>
+                    <div class="polaroid" onclick="likePhoto(this)">
+                        <img src="E:\Programming\ROSE DAY\IMG_20260113_202705375_HDR_PCT.jpg">
+                        <div class="caption"></div>
+                    </div>
+                    <div class="polaroid" onclick="likePhoto(this)">
+                        <img src="E:\Programming\ROSE DAY\IMG_20260110_145653054_HDR.jpg">
+                        <div class="caption"></div>
+                    </div>
+                    <div class="polaroid" onclick="likePhoto(this)">
+                        <img src="E:\Programming\ROSE DAY\img_1768945874712.jpg">
+                        <div class="caption"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="letter" class="content-card">
+            <div class="heart-inner">
+                <h1>My Letter</h1>
+                <h2>Read with your heart...</h2>
+                <div class="letter-paper">
+                    <div class="handwritten">
+                        Dearest Sapphire,<br><br>
+                        Words cannot describe how much you mean to me. You are the best thing happened to me in the entire world.
+                        <br><br>
+                        Happy Rose Day! 🌹<br>
+                        Forever, David
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="surprise" class="content-card">
+            <div class="heart-inner">
+                <h1>Send Love</h1>
+                <h2>Click to send roses!</h2>
+                <button class="btn-rose" onclick="sendRose(event)">Sent a Rose 🌹</button>
+                <div id="garden"></div>
+                <h3 id="counter">Roses: 0</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

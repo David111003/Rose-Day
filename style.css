@@ -1,0 +1,312 @@
+:root {
+    --primary-red: #d90429;
+    --dark-red: #800f2f;
+    --baby-pink: #ffc8dd;
+    --sidebar-bg: rgba(217, 4, 41, 0.9);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, #ffc8dd, #ffafcc, #bde0fe, #ffc8dd);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    margin: 0;
+    min-height: 100vh;
+    color: var(--dark-red);
+    overflow-x: hidden;
+    display: flex;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- CORNER FLOWERS --- */
+.corner-flower {
+    position: fixed;
+    font-size: 8rem;
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(2px);
+    animation: sway 5s ease-in-out infinite alternate;
+}
+.flower-tl { top: -20px; left: -20px; transform: rotate(-20deg); }
+.flower-tr { top: -20px; right: -20px; transform: rotate(20deg); animation-delay: 1s; }
+.flower-bl { bottom: -20px; left: -20px; transform: rotate(20deg); animation-delay: 2s; }
+.flower-br { bottom: -20px; right: -20px; transform: rotate(-20deg); animation-delay: 3s; }
+
+@keyframes sway { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
+
+/* --- OVAL SIDEBAR --- */
+.sidebar {
+    position: fixed;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80vh;
+    width: 120px;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(15px);
+    border-radius: 100px; 
+    border: 2px solid rgba(255,255,255,0.5);
+    box-shadow: 0 10px 40px rgba(217, 4, 41, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    z-index: 100;
+}
+
+.nav-profile {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tab-btn:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 70px;
+    background: white;
+    color: var(--primary-red);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tab-btn:hover { background: rgba(255,255,255,0.3); transform: scale(1.1); color: white; }
+.tab-btn.active { background: white; color: var(--primary-red); box-shadow: 0 0 15px rgba(255,255,255,0.6); }
+
+/* --- MAIN CONTENT (HEART SHAPE) --- */
+.main-content {
+    margin-left: 180px;
+    width: calc(100% - 180px);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content-card {
+    position: relative;
+    width: 95vh;
+    height: 95vh;
+    max-width: 950px;
+    max-height: 950px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 0 1000px transparent;
+    
+    /* HEART CLIP PATH */
+    clip-path: url(#heartClip); 
+    -webkit-clip-path: url(#heartClip);
+    
+    display: none;
+    animation: beatIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+}
+
+.content-card.active { display: block; }
+
+.heart-inner {
+    position: absolute;
+    top: 55%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72%; 
+    height: 72%;
+    overflow-y: auto; 
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heart-inner::-webkit-scrollbar { display: none; }
+
+@keyframes beatIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--primary-red); margin: 0; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); line-height: 1.1; }
+h2 { font-weight: 500; font-size: 1.2rem; margin-top: 5px; color: var(--dark-red); opacity: 0.9; }
+
+/* --- ELEMENTS --- */
+.big-rose {
+    font-size: 80px; 
+    margin: 10px 0; 
+    filter: drop-shadow(0 5px 5px rgba(217, 4, 41, 0.3)); 
+    animation: pulse 2s infinite;
+}
+
+.quote-text {
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    color: #660708;
+}
+
+/* --- LOVE LETTER --- */
+.letter-paper {
+    background: #fffbf0;
+    padding: 30px; 
+    margin-top: 15px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: left;
+    border: 1px solid #e3dcc8;
+    width: 90%; 
+    min-height: 200px;
+}
+
+.handwritten { 
+    font-family: 'Great Vibes', cursive; 
+    font-size: 1.8rem; 
+    color: #5c4d4d; 
+    line-height: 2rem; 
+}
+
+/* --- GALLERY --- */
+.gallery-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 15px; 
+    margin-top: 20px; 
+    width: 100%;
+}
+
+.polaroid { 
+    background: white; 
+    padding: 5px 5px 25px 5px; 
+    border-radius: 2px; 
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    transform: rotate(-2deg); 
+    width: 100px; 
+    cursor: pointer; 
+    transition: 0.3s; 
+}
+
+.polaroid:hover { transform: scale(1.5) rotate(0deg); z-index: 100; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.polaroid img { width: 100%; height: 100px; object-fit: cover; }
+.caption { font-size: 0.6rem; margin-top: 5px; color: var(--dark-red); }
+
+/* --- INTERACTIVE --- */
+.btn-rose { 
+    background: var(--primary-red); 
+    color: white; 
+    border: none; 
+    padding: 12px 30px; 
+    border-radius: 50px; 
+    font-size: 1.1rem; 
+    font-weight: 700; 
+    cursor: pointer; 
+    box-shadow: 0 5px 15px rgba(217, 4, 41, 0.4); 
+    margin-top: 20px; 
+    transition: 0.2s; 
+}
+.btn-rose:hover { transform: scale(1.05); }
+
+.music-pill { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 5px; 
+    background: white; 
+    color: var(--primary-red); 
+    padding: 8px 20px; 
+    border-radius: 30px; 
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    cursor: pointer; 
+    margin-bottom: 10px; 
+    font-weight: 600; 
+    font-size: 0.9rem; 
+}
+
+#garden { margin-top: 20px; font-size: 2rem; min-height: 50px; }
+#counter { margin-top: 10px; color: var(--primary-red); }
+
+.floating-msg { 
+    position: fixed; 
+    color: var(--primary-red); 
+    font-family: 'Dancing Script', cursive; 
+    font-weight: bold; 
+    font-size: 1.8rem; 
+    pointer-events: none; 
+    animation: floatUpMsg 2s ease-out forwards; 
+    z-index: 2000; 
+    background: rgba(255,255,255,0.95); 
+    padding: 8px 20px; 
+    border-radius: 30px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
+
+/* --- ANIMATIONS --- */
+@keyframes floatUpMsg { 
+    0% { opacity: 1; transform: translateY(0) scale(1); } 
+    100% { opacity: 0; transform: translateY(-120px) scale(1.2); } 
+}
+
+@keyframes popHeart { 
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; } 
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; } 
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0; } 
+}
+
+@keyframes pulse { 
+    0% { transform: scale(1); } 
+    50% { transform: scale(1.1); } 
+    100% { transform: scale(1); } 
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    body { flex-direction: column; }
+    .sidebar { 
+        position: fixed; top: auto; bottom: 20px; left: 50%; transform: translateX(-50%);
+        width: 90%; height: 60px; flex-direction: row; border-radius: 50px; 
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    .main-content { margin-left: 0; width: 100%; padding-bottom: 100px; }
+    /* Reset heart shape on mobile for better usability */
+    .content-card { 
+        width: 95vw; height: auto; min-height: 80vh; 
+        clip-path: none; 
+        -webkit-clip-path: none;
+        border-radius: 30px; 
+        background: rgba(255,255,255,0.7); 
+    }
+    .heart-inner { 
+        position: relative; top: auto; left: auto; transform: none; 
+        width: 100%; height: auto; 
+        padding: 20px; box-sizing: border-box; 
+    }
+}
